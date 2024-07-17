@@ -22,9 +22,16 @@ export class WorkoutService {
   }
 
   getWorkouts(): WorkoutEntry[] {
-    const storedEntries = localStorage.getItem(this.localStorageKey);
-    return storedEntries ? JSON.parse(storedEntries) : [];
+    if (typeof localStorage !== 'undefined') {
+      const storedEntries = localStorage.getItem(this.localStorageKey);
+      return storedEntries ? JSON.parse(storedEntries) : [];
+    } else {
+      console.error('localStorage is not available.');
+      return [];
+    }
   }
+  
+  
 
   getEntries(): WorkoutEntry[] {
     const entriesString = localStorage.getItem(this.localStorageKey);

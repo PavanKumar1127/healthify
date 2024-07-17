@@ -1,8 +1,7 @@
-// workout-form.component.ts
-
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { WorkoutEntry, WorkoutService } from '../../services/workout.service';
+import { WorkoutListComponent } from '../workout-list/workout-list.component';
 
 @Component({
   selector: 'app-workout-form',
@@ -10,6 +9,8 @@ import { WorkoutEntry, WorkoutService } from '../../services/workout.service';
   styleUrls: ['./workout-form.component.css']
 })
 export class WorkoutFormComponent implements OnInit {
+  @ViewChild(WorkoutListComponent) workoutListComponent!: WorkoutListComponent;
+
   userName: string = '';
   workoutType: string = '';
   workoutMinutes: number = 0;
@@ -20,15 +21,15 @@ export class WorkoutFormComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(form: NgForm): void {
-    if (form.valid) {
+    if (form.valid && this.workoutMinutes >= 0) {
       const workoutEntry: WorkoutEntry = {
         userName: this.userName,
         workoutType: this.workoutType,
         workoutMinutes: this.workoutMinutes
       };
-      
-      this.workoutService.addWorkout(workoutEntry); // Add entry to local storage
 
+      this.workoutService.addWorkout(workoutEntry); // Add entry to local storage
+      this.workoutListComponent.applyFilters();
       form.reset();
     }
   }
