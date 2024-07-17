@@ -1,43 +1,29 @@
 /* workout-list.component.css */
 
+.workout-list-container {
+  @apply max-w-xl mx-auto p-8 rounded-lg shadow-md;
+  background-color: #2d3748; /* Dark gray background */
+  color: #e2e8f0; /* Light gray text */
+}
+
+.filters {
+  @apply mb-4;
+}
+
+.input {
+  @apply border p-2 w-full rounded-md text-gray-200 placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:ring focus:ring-indigo-200;
+  background-color: #4a5568; /* Dark gray input background */
+}
+
+.table-container {
+  @apply bg-gray-200 shadow-md rounded-lg overflow-hidden;
+}
+
 .pagination {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .pagination button,
-  .pagination select {
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    border: 1px solid #cbd5e0;
-    border-radius: 0.25rem;
-    background-color: #ffffff;
-    color: #4a5568;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-  }
-  
-  .pagination button:hover,
-  .pagination select:hover {
-    background-color: #edf2f7; /* Lighter background on hover */
-  }
-  
-  .pagination select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="%234a5568" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 14l5-5H5l5 5z"/></svg>');
-    background-repeat: no-repeat;
-    background-position-x: right;
-    background-position-y: center;
-    padding-right: 2rem;
-  }
-  
-  .pagination span {
-    font-size: 0.875rem;
-    font-weight: bold;
-    color: #4a90e2; /* Adjusted color for page indicator */
-  }
-  
+  @apply mt-4 flex justify-between items-center;
+}
+
+.pagination button,
+.pagination select {
+  @apply px-4 py-2 text-sm border rounded bg-gray-700 text-gray-200 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
+}
