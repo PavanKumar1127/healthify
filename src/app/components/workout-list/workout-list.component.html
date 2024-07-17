@@ -1,0 +1,41 @@
+<!-- workout-list.component.html -->
+
+<div class="workout-list">
+    <h2>Workout Entries</h2>
+    <div class="filters">
+      <input type="text" placeholder="Search by name" [(ngModel)]="searchTerm" (ngModelChange)="applyFilters()">
+      <select [(ngModel)]="filterType" (ngModelChange)="applyFilters()">
+        <option value="">All Workout Types</option>
+        <option *ngFor="let type of availableWorkoutTypes" [value]="type">{{ type }}</option>
+      </select>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Workouts</th>
+          <th>Number of Workouts</th>
+          <th>Total Workout Minutes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entry of paginatedEntries">
+          <td>{{ entry.userName }}</td>
+          <td>{{ entry.workoutType }}</td>
+          <td>{{ getNumberOfWorkouts(entry.userName) }}</td>
+          <td>{{ getTotalWorkoutMinutes(entry.userName) }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination">
+      <button (click)="changePage(-1)" [disabled]="currentPage === 1">&lt;</button>
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <button (click)="changePage(1)" [disabled]="currentPage === totalPages">&gt;</button>
+      <select [(ngModel)]="itemsPerPage" (ngModelChange)="applyFilters()">
+        <option [value]="5">5 per page</option>
+        <option [value]="10">10 per page</option>
+        <option [value]="20">20 per page</option>
+      </select>
+    </div>
+  </div>
+  
