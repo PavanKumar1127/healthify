@@ -17,14 +17,14 @@ export class WorkoutFormComponent implements OnInit {
   availableWorkoutTypes: string[] = ['Running', 'Cycling', 'Swimming', 'Yoga', 'Weight Lifting'];
   errorMessage: string = '';
 
-  constructor(private workoutService: WorkoutService) {}
+  constructor(private workoutService: WorkoutService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onSubmit(form: NgForm): void {
     console.log('Form submitted'); // Log to check if method is called
     this.errorMessage = '';
-    
+
     if (!this.userName || !this.workoutType || this.workoutMinutes === null) {
       console.log('Validation failed: Missing fields'); // Log validation failure
       this.errorMessage = 'Please fill out all fields before adding a workout.';

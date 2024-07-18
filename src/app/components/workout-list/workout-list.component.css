@@ -2,8 +2,10 @@
 
 .workout-list-container {
   @apply max-w-xl mx-auto p-8 rounded-lg shadow-md;
-  background-color: #2d3748; /* Dark gray background */
-  color: #e2e8f0; /* Light gray text */
+  background-color: #2d3748;
+  /* Dark gray background */
+  color: #e2e8f0;
+  /* Light gray text */
 }
 
 .filters {
@@ -12,7 +14,8 @@
 
 .input {
   @apply border p-2 w-full rounded-md text-gray-200 placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:ring focus:ring-indigo-200;
-  background-color: #4a5568; /* Dark gray input background */
+  background-color: #4a5568;
+  /* Dark gray input background */
 }
 
 .table-container {

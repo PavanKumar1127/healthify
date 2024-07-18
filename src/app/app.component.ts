@@ -7,11 +7,12 @@ import { WorkoutService } from './services/workout.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title = 'healthify';
   userName: string = '';
   workoutType: string = '';
   workoutMinutes: number = 0;
 
-  constructor(private workoutService: WorkoutService) {}
+  constructor(private workoutService: WorkoutService) { }
 
   onSubmit(): void {
     if (this.userName && this.workoutType && this.workoutMinutes > 0) {
@@ -24,7 +25,6 @@ export class AppComponent {
       this.resetForm();
     } else {
       console.error('Validation failed: Please fill out all fields and enter valid workout minutes.');
-      // Handle validation error display or logging
     }
   }
 
