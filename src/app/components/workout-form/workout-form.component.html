@@ -19,7 +19,10 @@
                placeholder="Enter workout minutes" class="input" min="0">
       </div>
     </div>
-    <button type="submit" [disabled]="!workoutForm.form.valid" class="btn-primary">
+    <div *ngIf="errorMessage" class="text-red-500 text-sm">
+      {{ errorMessage }}
+    </div>
+    <button type="submit" class="btn-primary">
       Add Workout
     </button>
   </form>
