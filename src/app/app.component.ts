@@ -1,6 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { WorkoutService } from './services/workout.service';
-import { WorkoutListComponent } from './components/workout-list/workout-list.component';
 
 @Component({
   selector: 'app-root',
@@ -15,14 +14,18 @@ export class AppComponent {
   constructor(private workoutService: WorkoutService) {}
 
   onSubmit(): void {
-    const workout = {
-      userName: this.userName,
-      workoutType: this.workoutType,
-      workoutMinutes: this.workoutMinutes
-    };
-    this.workoutService.addWorkout(workout);
-    
-    this.resetForm();
+    if (this.userName && this.workoutType && this.workoutMinutes > 0) {
+      const workout = {
+        userName: this.userName,
+        workoutType: this.workoutType,
+        workoutMinutes: this.workoutMinutes
+      };
+      this.workoutService.addWorkout(workout);
+      this.resetForm();
+    } else {
+      console.error('Validation failed: Please fill out all fields and enter valid workout minutes.');
+      // Handle validation error display or logging
+    }
   }
 
   resetForm(): void {

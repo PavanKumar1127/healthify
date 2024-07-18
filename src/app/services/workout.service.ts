@@ -11,7 +11,38 @@ export interface WorkoutEntry {
 })
 export class WorkoutService {
   private localStorageKey = 'workoutEntries';
-  private workouts: WorkoutEntry[] = [];
+  private workouts: WorkoutEntry[] = [
+    {
+      userName: 'John Doe',
+      workoutType: 'Running',
+      workoutMinutes: 30
+    },
+    {
+      userName: 'John Doe',
+      workoutType: 'Cycling',
+      workoutMinutes: 45
+    },
+    {
+      userName: 'Jane Smith',
+      workoutType: 'Swimming',
+      workoutMinutes: 60
+    },
+    {
+      userName: 'Jane Smith',
+      workoutType: 'Running',
+      workoutMinutes: 20
+    },
+    {
+      userName: 'Mike Johnson',
+      workoutType: 'Yoga',
+      workoutMinutes: 50
+    },
+    {
+      userName: 'Mike Johnson',
+      workoutType: 'Cycling',
+      workoutMinutes: 40
+    }
+  ];
 
   constructor() { }
 
@@ -24,14 +55,12 @@ export class WorkoutService {
   getWorkouts(): WorkoutEntry[] {
     if (typeof localStorage !== 'undefined') {
       const storedEntries = localStorage.getItem(this.localStorageKey);
-      return storedEntries ? JSON.parse(storedEntries) : [];
+      return storedEntries ? JSON.parse(storedEntries) : this.workouts;
     } else {
       console.error('localStorage is not available.');
-      return [];
+      return this.workouts;
     }
   }
-  
-  
 
   getEntries(): WorkoutEntry[] {
     const entriesString = localStorage.getItem(this.localStorageKey);
@@ -44,6 +73,4 @@ export class WorkoutService {
   clearAllWorkouts(): void {
     localStorage.removeItem(this.localStorageKey);
   }
-
-  
 }
